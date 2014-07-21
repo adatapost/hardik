@@ -1,0 +1,470 @@
+Access modifiers or access control keywords
+=====================================================================
+
+  These keywords are used to set visibility of your entities (Types &   its members).
+
+  C# has five access modifiers :
+
+  1. public  - public entities have no access restrictions. They can be
+               used inside as well as outside the assembly.
+
+  2. private - private entities are only visible inside the containing 
+		type in which they are created or defined.
+
+  3. internal - internal entities are only visible inside the assembly.
+		 They cannot be visible outside the assembly.
+
+  4. protected - protected entities are visible inside the containing
+		 type and in sub-classes.
+
+  5. protected internal - These entities are visible inside the 			  assemblies via sub-classing (Inheritance).
+
+NOTE: Access modifiers cannot be used with namespace. Namespaces are "public" by default.
+
+
+ Top-level TYPES can have either "public" or "internal" and default is  "internal" if access modifier is not specified.
+
+  Top-level means a TYPE which is not nested.
+
+  e.g
+
+   class A  <-- Top level
+   {
+      class B  <-- Nested (Not Top-level)
+         {
+          }
+    }
+    
+
+ Nested TYPES & its members have following declared visibility:
+
+  TypeName	Default		You can change
+  ---------------------------------------------------------------
+  class		private		private,public, protected, internal 
+				and internal protected.
+
+  interface	public		Can't change
+ 
+  struct	private		private, public and internal
+				[struct can't support inheritance so
+				 protected & protected internal not
+				 used]
+  enum		public		Can't change
+
+  delegate	----		---- (Delegates have no members)
+
+
+ C# Basics
+ ==========
+
+ Create Console app
+ --------------------
+
+   1. Create Console App project 
+   2. Remove all content from "Program.cs" and write following code.
+
+class FirstApp
+{
+  static void Main()   // M must be capital letter
+   {
+      System.Console.WriteLine("System is namespace");    
+      System.Console.WriteLine("Console is a class");
+      System.Console.WriteLine("WriteLine is a method");
+    }
+}
+Press F5 to debug or Ctrl+F5 to run without debug.
+
+
+Importing the namespace
+------------------------
+ To "import" the namespace means to tell/instruct the C# compiler to
+ add TYPE qualification at the time of compilation of code.
+
+ Syntax:
+
+   using Namespace;
+   using Namespace.SubNamespace;
+
+Ex:
+
+using System;
+
+class Test
+{
+   static void Main()
+    {
+       //create int variables
+
+       int no = 10; //or System.Int32
+       Int32 no1 = 20; 
+       
+       Console.WriteLine(no);  // 10
+       System.Console.WriteLine(no1); //20
+     }
+}
+
+
+ Create alias of your type
+ --------------------------
+
+  Syntax:
+
+     using alias=Namespace.TypeName;
+
+Ex:
+
+using cn=System.Console;
+
+class Test
+{
+   static void Main()
+   {
+     cn.WriteLine("Hello");
+   }
+}
+
+
+ Local variables & initialization
+ -----------------------------------
+
+  Local variables must be initialized/assigned before we use them   because they do not have initial or default value.
+
+
+Ex:
+
+class Test
+{
+  static void Main()
+   {
+      int no;
+      no++;  <---------- Error - 'no' is not initialized
+      System.Console.WriteLine(no);
+    }
+}
+
+ Literals
+ ---------------------------------------
+
+  C# compiler support following literal (constants) value:
+
+
+   1. Integer literal denoted by digits, +/- sign using decimal, hexa-	decimal and octal numbers.
+
+        e.g
+
+             15   Decimal literal
+             0xF  Hexadecimal (0x prefix)
+             012  Octal  (0 prefix)
+
+        byte,sbyte, short, ushort, int, uint, long, and ulong are
+        "int family" members and you can use "integer literal" with
+         any above mentioned types.
+
+         e.g     byte bt = 100; //valid
+                 byte bt1 = 256; //invalid because range of byte is 
+				  //0 to 255
+         Compiler throw errors when given literal excced the range of
+         target type.
+
+
+    Determine the range of simple Types.
+    -----------------------------------
+      Use SimpleType.MinValue and SimpleType.MaxValue field.
+
+     e.g
+        Console.WriteLine(int.MinValue + " " + int.MaxValue);
+        Console.WriteLine(sbyte.MinValue + " " + sbyte.MaxValue);
+
+
+   2. Long literal - Use "L" or "l" suffix with int literal.
+
+      e.g    long no = 12345678910L;  //valid
+
+        long no = 100000L * 100000L;
+        Console.WriteLine(no);
+
+   3. Double literal - Value with decimal point is known as double       literal.
+
+            10.10 is double literal
+
+    4. Float literal - Use "F" or "f" suffix with double literal
+
+           e.g  float no  =10.10; //error - cannot convert double to
+					    float
+
+             float no = 10.10F;  //correct use
+
+    5. Decimal literal - Use "M" or "m" suffix with double literal
+
+           e.g decimal amount = 10000.20m;
+
+    6. boolean literal  - use true or false literal
+
+          e.g bool maritalStatus = true;
+
+    7. character literal - Single char or unicode pattern embed with
+                           single quote.
+
+         ANSI =>   'a'  or '?' or '3'
+
+        UNICODE =>  '\u0000'  \u + four digit hex value
+
+                    '\u0A3D'  is valid
+                    '\u012'   is not valid
+
+
+
+    8. string literal - Double quotes are used to represent string.
+
+        C# compiler creates an object of "System.String (or string         alias)" when you denote data with double quotes.
+
+        e.g  "Hello"   is an object of System.String class.
+
+        [Note: No need to use "new" create because C# compiler will
+               do itself].
+         
+          
+
+Ex: String with escape sequence chars (\n \t \b \\ etc)
+
+    You can embed backslash (escape) chars into strings.
+
+  Code in Main:
+
+       string str = "\nRoll\t\tName";
+       Console.WriteLine(str);
+       Console.WriteLine("1\t\tRaj");
+   
+Ex: Represent or remove(unescape) backslash
+
+        string path = "c:\new folder\test";
+        Console.WriteLine(path);
+        path = "c:\\new folder\\test";
+        Console.WriteLine(path);
+        path = "c:/new folder/test";
+        Console.WriteLine(path);
+        path = "The \"red\" sun";
+        Console.WriteLine(path);
+
+string verbatim @ operator
+ -------------------------
+  It removes the escape char from string and also allow us to
+  create multiline string.
+
+  e.g
+
+    string path = @"c:\new folder\test";
+    Console.WriteLine(path);
+    
+    string info=@"
+Hi,
+
+I'm Mr. ABC
+
+Thanks";
+ 
+    Console.WriteLine(info);
+
+
+string concatenation + operator
+-------------------------------
+
+   If first expression is string then second expression of any datatype    will be converted to string.
+
+
+   Ex:
+
+      int no1=10,no2=20;
+      Console.WriteLine("Sum : " + no1 + no2); // Sum : 1020
+      Console.WriteLine("Sum : " + (no1 + no2)); // Sum : 30
+
+      Console.WriteLine("Sum of " + no1 + " and " + no2 + " is " 
+                         +  (no1 + no2));
+
+
+Strings in .net framework
+===================================================================
+
+ There are two classes namely System.String and  System.Text.StringBuilder classes in .net framework.
+
+ In fact, we've two types of "strings":
+
+    1. Immutable String (Read only) -- String object cannot be updated
+					once it is created is called
+					immutable.
+
+    2. Mutable String 		   -- String object can be updated (you 					can insert/delete/replace 					content of object) is called
+					mutable.
+
+   The "System.String" is immutable and
+   the "System.Text.StringBuilder" is mutable.
+
+  
+ Whenever we tried to change the "System.String", the CLR will allocate  new memory for each result.
+
+   Ex:
+
+        string str = "Hello";  //create 1st object
+        str = str + "World";  //create 2nd object to store HelloWorld
+        str = str.ToUpper();  //create 3rd object to store "HELLOWORLD"
+        Console.WriteLine(str);
+
+
+  NEVER USE "System.String" if you wish to manipulate string data. Use  "System.Text.StringBuilder" class instead.
+
+   Ex:
+
+    
+    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+        sb.Append(100);
+        sb.Append(10.20);
+        sb.Remove(2, 5);
+        sb.Append("Hello");
+        sb.Insert(0, "*ABC*");
+        Console.WriteLine(sb.ToString());
+
+
+Major the string performances using "StopWatch" class.
+-------------------------------------
+
+ Code in Main:
+
+    System.Diagnostics.Stopwatch watch = new                            System.Diagnostics.Stopwatch();
+
+       // string str = ""; 
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        watch.Start();
+        for (int i = 1; i <= 100000; i++)
+        {
+           // str = str + i;
+            sb.Append(i);
+        }
+        watch.Stop();
+
+        Console.WriteLine(watch.ElapsedMilliseconds + " ms.");
+
+String to simple type conversion -- SimpleType.Parse() method
+===============================================================
+
+  Ex:
+  
+       string str = "10.0";
+
+       int no  = int.Parse(str);
+
+  The "Parse()" method parse the string and return data, throws   exception if string has illegal / invalid data.
+
+
+
+   DateTime action
+   ---------------
+
+    1. String to date parse
+
+           DateTime dt = DateTime.Parse("12/31/2012 10:20:30 PM");
+           Console.WriteLine(dt);
+
+           DateFormat must be : mm-dd-yyyy hh:mm:ss am/pm
+
+    2. Obtain system's locale datetime
+
+           Console.WriteLine(DateTime.Now);
+
+           DateTime dt = DateTime.Now;
+  
+           Console.WriteLine(dt);
+
+    3. Obtain system's UTC datetime  
+
+            Console.WriteLine(DateTime.UtcNow);  // + 05:30 timezone
+
+     
+    4. Day, Month, Year , Hours etc properties to read DateTime part
+
+        DateTime dt = DateTime.Now;
+        Console.WriteLine(dt.Month + " " + dt.Year);
+
+    5. Add/subtract days//months/years/hours etc 
+
+            DateTime dt = DateTime.Now;
+ 
+            dt = dt.AddDays(-100); // AddMonths(), AddYEars()....
+            Console.WriteLine(dt);
+
+       e.g  Add 5 days 3 months and subtract 7 years from the today
+
+            DateTime dt = DateTime.Now.AddDays(5)
+                                      .AddMonths(3)
+                                      .AddYears(-7);
+
+    6. Difference between two DateTime objects.
+
+       The "System.Timespan" struct holds difference of two datetime        objects.
+
+
+         Ex:
+
+        DateTime dt1 = DateTime.Parse("12/31/2013");
+        DateTime dt2 = DateTime.Now;
+
+        TimeSpan diff =  dt2 - dt1;
+
+        Console.WriteLine(diff.TotalDays);
+        Console.WriteLine(diff.TotalHours); 
+
+        
+SimpleType to "String"
+===================================================================
+
+Using SimpleType.ToString([format]) method we can convert or format simple type value to string.
+
+ Ex:
+
+     decimal amount = 100000.30m;
+
+     string str1 = amount.ToString();
+     string str2 = amount.ToString("N"); //N-Number Format
+                                         //two digits decimal 
+					 // & thousand seperator
+
+     Console.WriteLine(str1 + " " + str2);
+
+     Console.WriteLine( amount.ToString("C")); //C-Currency format
+
+     Console.WriteLine( amount.ToString("N4")); //N format with 4
+						//digit decimal
+
+
+     Console.WriteLine( amount.ToString("00,00,00,000.00")); //Custom
+     Console.WriteLine( amount.ToString("##,##,##,000.00")); //Custom
+   
+       # sign is replace with empty string (blank).
+
+
+
+Date Format characters
+-------------------------
+        DateTime dt = DateTime.Now;
+
+        Console.WriteLine(dt.ToString());
+        Console.WriteLine(dt.ToString("d")); //date
+        Console.WriteLine(dt.ToString("t")); //time
+        Console.WriteLine(dt.ToString("m"));//month day
+        Console.WriteLine(dt.ToString("y")); //month year
+        Console.WriteLine(dt.ToString("dd")); //day number
+        Console.WriteLine(dt.ToString("ddd")); //day abbr
+        Console.WriteLine(dt.ToString("dddd")); //day fullname
+        Console.WriteLine(dt.ToString("MM")); //month number
+        Console.WriteLine(dt.ToString("MMM")); //month abbr
+        Console.WriteLine(dt.ToString("MMMM")); //month fullname
+
+        Console.WriteLine(dt.ToString("HH")); //24 hour
+        Console.WriteLine(dt.ToString("hh")); //12 hour
+        Console.WriteLine(dt.ToString("mm")); //minutes
+        Console.WriteLine(dt.ToString("ss")); //second
+        Console.WriteLine(dt.ToString("tt")); //AM/PM
+
+        Console.WriteLine(dt.ToString("dd-MM-yyyy hh:mm:ss tt")); 
+
+ 
