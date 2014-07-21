@@ -1,0 +1,70 @@
+Components of the .net framework
+===================================================================
+
+   The .net framework is constituted using three major components (ie.    thress components forms a net framework).
+
+     1. CLI - Common Language Infrastructure
+
+     2. CTS - Common Types System
+
+     3. CLR - Common Language Runtime
+
+
+    In order to use the .net framework (to develop, deploy and execute     apps), one must have in-depth know-how of these three components.
+
+    
+
+
+   1.  CLI
+    ========
+
+
+    The CLI is guideline for the people who wants to use the .net     framework. Under the CLI, there are number of specifications     (guideline documents) including Command Language Specificaton         (CLS), Unified programming model and many more.... 
+
+    In other words these specifications publish number of rules ranging     from variable declaration to method overriding.
+
+
+    C#,VB.NET , PHP.NET, Python.NET and many more programming languages
+    are designed using CLS and hence they are called "CLS-Compliant"     programming langauges. 
+
+
+  2. CTS
+  =======
+
+     The Common Types System is the only TYPES (DataTypes) system      exists on .net framework and all CLS-Compliant languages must
+     uses the CTS in order to use .net framework & its services.
+
+
+     There are two group of CTS:
+
+       1. Base Class Library (Core API)
+
+          Base class library includes -- 
+            => Simple Types (primitive)
+	    => Input/Output classes
+	    => Networking
+            => Internationalization (Globalization & Localization)
+            => Debug & diagnostics
+            => Text Endcoding, Cipher and Hash
+            => Runtime and reflection and many more..
+
+            The "base" class library classes are system-level (low-		level).
+
+        2. Extended class library -- These class libraries are 	   developed using "base" class lib to define application-	   specific APIs (Application Programming Interface).
+
+           Following are example of Extended class libraries:
+              => ADO.NET -- Database Integration
+              => Collection Framework
+              => XML.NET -- XML Parsers
+              => JSON    -- JSON Parsers
+              => WinForm -- Window Form API
+              => WPF - Window Presentation Framework 
+              => WCF - Window Communication Framework
+              => WWF - Window Workflow Foundation
+              => ASP.NET - Web Platform
+              => LINQ - Language Integrated Query
+              => EDM - Entity Data Model 
+                 and many more.....
+ 
+
+

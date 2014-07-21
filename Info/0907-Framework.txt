@@ -1,0 +1,68 @@
+The .Net Framework
+=====================================================================
+ 
+  What is a "framework" or "platform"?
+
+    The framewor/platform is a computing environment through which
+    we can develop, deploy and execute applications in highly 
+    distributed environement of the Internet (network).
+
+    Distributed Computing  / Client-server computing : 
+
+       To split the process (program) into two or more processes        (applications) and these processes will be communicate
+       with each other via evergreen network protocol TCP/IP -- This
+       kind of application architecture is known as "Client/Server"
+       or "Distributed Computing".
+
+       It is important to note that these processes are exists into
+       a single host (machine) or remote host but when they are up,        they will united like a "whole".
+
+       Each running process must have IP-address and unique port        number. The C/S architecture define communication channel via
+       IPAddress:port (e/g 127.0.0.1:1500 ) syntax.
+
+       There are 65536 ports for TCP/IP and
+                 65536 ports for UDP (User Datagram Protocol).
+
+       Port number is positive integer ranging from 0 to 65535.
+
+       In our operating systems, some of the PORT are reserved for
+       standard protcols and internal working. 
+
+             e.g PORT 7 for timer
+                 PORT 21 for FTP
+                 PORT 80 for HTTP
+
+       Basically platforms are designed using "Holywood principle -        Dont' call us, we will call you". In computing context, this        principle is known as Inversion of Control - IoC.
+
+       Platforms are like "container" of applications and they manages
+       them (start, stop, pause, communicate and so on).
+
+  
+ What is the .net framework?
+
+       The .net framework is set of services which are started with
+       operating system and exposed to us in form of system-level and
+       abstracted classes. 
+
+       The .net framework for linux/mac OS is known as "Mono".
+       
+
+       Service? It is a program with long life. Long run application.
+
+
+
+       The .net framework is open source. We can use, distribute or
+       sale our products written on .net framework without any licence         or with open source licence.
+
+
+       Home of Framework (Win OS)
+
+          X:\Windows\Microsoft.NET\Frameworks folder is HOME of
+          .net frameworks.
+
+          Current Framework version is 4.5 (previous releases - 4.0,           3.5, 2.0, 1.1, 1.0)
+
+        
+       
+       
+

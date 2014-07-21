@@ -1,0 +1,200 @@
+Visual Studio
+============================================================
+
+  VS is an IDE - Integrated Development Environment through which     
+  we can develop, build and deploy application rapidly.
+
+  The VS offers:
+
+     1. Code management (code files, code refectoring, code analysis)
+     2. Designer - HTML, XML, Database, Graphics, Assembly etc
+     3. Debugger -- Power feature of VS provide code debug framework
+     4. Source Safe -- Code repository.
+     5. Unit testing tool
+
+  [Register - github.com (free) for public code repository]
+
+
+
+  How to learn C# language (VB.NET) from the scratch?
+
+    In order to learn C# language from the beginning, use the Visual     Studio's Console Application Project template. The Console     Application project template offer simple build strategy and     redirect input & output to the command prompt.
+
+
+     What is project template?
+
+        A project template is nothing but a configuration file for
+        MSBUILD so the VS & MSBuild can generate assembly as per
+        settings exists in configration file.
+
+        C# project template file has .csproj extension along with
+        source code files (.cs) and other files.
+  
+        A project template contains:
+
+             1. Type of assembly (DLl(Library) or Exe(Executable)
+             2. Number of source code file and thier location
+             3. Number .net framework libraries
+             4. Build mode - There are two basic build modes 
+                           1. Debug mode (default)
+                           2. Release mode 
+             5. Compiler switches and many more
+
+             
+        
+        How to change "project template settings"?
+
+            1. Project Menu + Project Properties
+           Or
+            1. In solution explorer + Right click on project name + 			Properties.
+	 	or double click on "Properties" node in solution 		explorer.
+
+        What about "debug" and "release" build?
+
+             These are two configurations for apps.
+
+             Debug config for those applications which are not finished
+             and they need testing, debugging and source code 		navigating.
+
+              Release mode is for those application which are ready to
+              use for production.
+
+
+Step of to create console application
+========================================================
+
+1. Create console project under your folder (do not use long foldername    or default folders).
+
+2. The file named "Program.cs" will be opened when you create a project. So, delete the content of "Program.cs" file and write following:
+
+
+public class HelloApp
+{
+   static void Main()  // M of Main must be capital
+    {
+      System.Console.WriteLine("Hello C#");
+     }
+}
+
+
+To run this program:
+
+  1. Press F5 ( Debug Menu + Start Debugging)
+
+     This way VS will build , lauch  (start) and stop your program.
+
+  2. You can run your program in "temporary Release mode" by pressing
+     CTRL+ F5 (Debug Menu + Start Without Debugging)
+
+
+
+
+
+
+C# Language
+===========
+
+ C# Language is:
+
+    1. Statically typed and strongly type checked language
+    2. supports Object-Oriented Paradigm.
+    3. support dynamic language features.
+    4. case-sensitive and its syntax derived from C++ language.
+    5. C# is designed using C# Language Specificiation (CLS)
+    6. C# is only the language that shipped with very first version
+	of .net framework.
+
+
+ Note: Dynamic language assign TYPE to the value instead of "variable".
+       JavaScript, PHP, Ruby are example of dynamic languages.
+
+Currently we are using C# version 5.0.
+
+
+
+C# Language Basics
+=================================================================
+
+Every C# program file contains one or more statements in following order and a file that store C# code is called "compilation unit". 
+
+Extension of compilation unit should be .cs but you can change it at your will.
+
+ 1. Importing namespace (using diretive)
+ 2. Define namespace
+ 3. Create user-defined TYPES inside the namespace(s)
+
+
+The "using" statement is optional and yuo can define TYPES inside the namespaces.
+
+If namespace is not defined then your TYPES will be created into "global namespace". Do not use "global" namespace because other application might contains same named types.
+
+
+Example: (Code in .cs file)
+
+namespace Hardik
+{
+   public class Config{}   //named namespace class
+}
+
+public class Config{}      //global namespace class
+
+Syntax to create namespace & sub-namespace
+===========================================
+
+  namespace NameSpaceName {}
+  namespace NameSpaceName.SubNameSpace{}
+  namespace NameSpaceName
+   {
+      namespace SubNameSpace{}
+      ....
+    }
+
+ Namespaces are "public" by default and they remain "public" forever.
+
+
+ The entry point method and primary class
+=========================================================
+
+ A class having one of the four signature of entry-point method is called "Primary class".
+
+   1. static void Main()
+   2. static void Main(string []args) // System.String []args
+   3. static int Main()
+   4. static int Main(string []args)  // System.String []args 
+
+ 
+
+System.String Vs string
+=============================================================
+ 
+In C#, we have two more aliases for System.String and System.Object class.
+
+  System.String	can be written using C# alias "string" (small letter)
+
+  and
+ 
+  System.Object can be written using "object" alias.
+
+
+So there is no difference between "String" and "string" and similaraly "Object" and "object".
+
+
+
+
+
+
+
+
+ 
+
+
+
+    
+    
+
+
+
+
+
+
+ 

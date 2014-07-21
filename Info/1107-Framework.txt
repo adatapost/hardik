@@ -1,0 +1,103 @@
+   Memory architecture of .net applications
+   ----------------------------------------
+
+   To understand the CTS, one must have know-how of "How memory is
+   reserved (used by TYPES) for CTS?".
+
+
+   When we launch an application, the .net framework service allocate
+   1 MB memory for "local variables", "method arguments", "method    return value" and "method call" -- this 1 MB RAM segment is called    "Stack Frame Memory".
+
+
+   In case we need more memory to store huge amount of data then we must have to request the .net framework and .net framework will return memory address of allocated region -- this allocated memory is called "Heap frame memory".
+
+   The size of "heap" can be vary from 1 byte to 2 GB or more (depend    upon the RAM chips).
+
+    Note: We will use "new keyword" to request more memory.
+
+     
+
+  Based upon memory usage (as per above mentioned), CTS are falls into   following group (category):
+
+    1. Value Types : TYPES having fixed data size/length are called
+		     Value TYPES.
+
+                    In CTS, "structure" and "enum" keyword are used
+	            to design "Value Types".
+
+                    So, struct & enum are example of value types.
+
+                    Value Types uses "Stack Frame" as well as "Heap                     Frame" memory.
+
+  2. Reference Types : TYPES having variable data size/length are
+                       called "Reference Types".
+
+                       In CTS, "class","interface","array","delegate"
+                       are used to create "Reference Types". So, class,
+                       interface, array and delegate are example of
+                       Reference Types.
+
+                       Reference Types always uses "Heap Frame".
+
+
+  Simple Types (Primitive)
+  ------------------------
+
+  Simple Types are "struct" (ie. they are Value Types) and they are 
+  available at "System" namespace.
+
+  Namespace is just like a "package" in Java. Java's root package name is 'java' whereas .net framework's root namespace(package) name is  'System'.
+
+  ------ What is namespace? ------------------
+  |  A namespace (package) is tecnique to create a group of related
+     classes and keep one group of classes distict from another group
+     of classes to avoid name-mangling ( duplicate).
+
+   
+  CTS Name		C# alias(second name)		Size(bytes) ====================================================================
+ System.Byte		byte  (unsigned)  		1
+ System.SByte		sbyte (signed)			1
+
+ System.Int16		short	(signed)		2
+ System.UInt16		ushort (unsigned)		2
+
+ System.Int32		int (signed)			4
+ System.UInt32		uint (unsigned)			4
+
+ System.Int64		long(signed)			8
+ System.UInt64		ulong(unsigned)			8
+  
+    [Byte, Int16, Int32, Int64 are integer family members]
+
+
+ System.Single		float				4
+ System.Double		double				8
+ System.Decimal		decimal				14
+
+    [float, double & decimal are real type family members]
+
+ System.Char		char				2
+			character represent unicode character-set
+                        also called UTF - Universal text format 
+                        or National character set.
+
+                        UTF allow us to represent char-set of 
+                        different langauges including English,
+			Hindi, Gujarati and so on.
+
+			DBMS systems (oracle, MySql, MSSQL, DB2 etc)
+ 			uses nchar, nvarchar, nvarchar2, ntext
+			datatypes.
+
+ System.Bool		bool				1 (bit)
+			Value true or false is used.
+
+ System.DateTime	System.DateTime			8
+
+
+
+ 
+
+ 
+
+   

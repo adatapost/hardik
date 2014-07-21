@@ -1,0 +1,141 @@
+4. Version checking & co-instance execution
+
+   This service select appropriate version of Types and Assembly before
+   it goes to the execution to prevent runtime ugly errors.
+
+
+   With .net framework, you can use different version of assemblies    into very same project/program.
+
+   [CLR uses assembly's metadata (manifest) to read assembly's registry    details including - name, version, culture-country and many more...]
+
+   [.Net and Java components are self-registered. They don;t require OS     registry].
+
+5. Memory Management service
+
+   CLR's memory manager allocate 1 MB RAM for each running instance called "Stack Frame" to store local variable, method parameter, method return type and method call.--- This 1 MB memory region is also known as "Static Memory Allocation".
+
+   Stack Frame memory is used/reused implicitly by the CLR's memory    manager.
+
+    In case, you dont want to store your data into "Stack Frame" Or your data is too large to fit into "Stack Frame" then you have to request the CLR's memory manager for more memory explicitly (manually) via "new" keyword.
+
+    The heap is allocated by memory manager and it will be released by anthor service of CLR called "Garbage Collector" when that particular heap is "un-referenced".
+
+    The Garbage collector service continious check the "heap" and if it is un-referenced (whose address is lost) then it will disposed it and reclaim free memory.
+
+   string name = "Hello";  //An object contains "Hello" and returns
+			   //its address.
+
+                          //"name" is a reference variable and its
+			  //length/size will be 4 bytes.
+
+   name = "Hi";           //lost the address of "object" which contains
+			  //"Hello" because name holds memory address
+			  //of another object.
+
+   Note that the GC - Garbage collector cleans only the heap. It cannot
+   work with "Stack frame".
+
+
+ 
+6. Type Safety Verification
+
+    This service ensure that the TYPE of value must be same as TYPE of
+    variable. The Type-Safety can be done at the time of compilation as     well as runtime.
+
+    C# language also verify the "Type Safety" at the time of     compilation.
+
+    .Net framework's CTS is tightly type checked or strongly type      checked so TYPE of value must match with TYPE of variable.    
+
+
+    e.g
+
+       float n = 10.10; <-- Error: 10.10 value's TYPE is double
+
+7. COM-Interoperability service
+
+   COM stands for Component Object Model -- Application developed in C   ++ or DNA framework are example of COM.
+
+   The CLR's can provide its services to the .Net Components or    programs written in CLS-compliant languages (C#, VB.NET). It means program written in CLS-Compliant is "managed or controlled" by the CLR but the CLR cannot handle or manage non-CLS code.
+
+   This COM-InterOp service allow the CLR to select the runtime environment for the COM so this COM-environment can execute the COM components hosted into .NET Component.
+
+
+8. Exception handling and object profiling service
+
+   Exception handling service notify the user's application about
+   abnormal things happen while executing an application.
+
+   Object profile service helps memory manager and garbage collectors
+   to allocate & deallocate memory. It also helps developer to optimize    the object structure.
+
+
+Assembly
+==============
+
+  .Net assembly is created via CLS-compliant compilers (VB.NET, C# etc)
+  and it contains following:
+
+    1. MSIL code
+    2. TYPE MetaData
+    3. Resources -- images/icons/text/message
+    4. Assembly MetaData or Manifest
+
+
+   When we compile our C# code, the C# compiler generate assembly (.dll    or .exe) and each assembly is made up of four elements.
+
+   1. MSIL code -- It is also called Module. 
+   2. TYPE MetaData -- CTS's type reference, location, version etc
+   3. Resources - Non-programming elements. Especially images/icons/
+			text doc, html doc etc
+   4. Assembly MetaData or manifest -- It contains version of assembly,
+		name of assembly, author , country and many more 		details.
+
+    All above mentioned elements are read & used by the CLR at the time
+    of exection.
+
+
+    Important: The assembly is a deployment unit of your software or     projcet. You can use copy  command (copy + paste) to install your
+    application on remote machines. You just need to copy that assembly where you want to execute it. In fact you must have to install the  appropriate version ".net framework" to execute apps.
+
+
+    The .net framework has a build-tool called "MSBUILD" which compile     source code files, embed resources and produce single "assembly". 
+
+     [NOTE: Java Framework uses "Ant" or "Maven" build tool to
+     produce .jar, .war or .ear assemblies].
+ 
+
+
+
+     These tools ease our compilation & deployment so we can say .net      and Java framework offers Zero-cost deployment.   
+
+
+     However, there are many other ways exists through which you can
+     deploye apps interactively.
+
+
+   Now, based upon the assemblies are created and used, we've two types of assemblies:
+
+     1. Private assemblies -- By default, private assembly will be 				generated by build-tools.
+
+		Private assembly means the private assembly must be
+
+                copied into a project in which it is used. 
+
+     For example, assembly "A" has some TYPES and you want to use these
+                  TYPES into "B" assembly then you must have to copy
+                  assembly "A" into "\bin" folder of assembly "B".
+
+     2. Shared assemblies (public) -- Public assemblies are installed
+         once via system administrator into a machine and then used by          more than one applications.
+
+         The location where "Shared" assemblies" are installed is          called "Global Assemblies Cache - GAC". 
+           (see x:\Windows\assemblies folder)
+
+
+
+          
+
+
+    
+
+
